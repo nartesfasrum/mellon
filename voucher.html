@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Oliver Inn Access Portal</title>
+	<script>
+		function setCookie(exdays) {
+			const d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			let expires = "expires=" + d.toUTCString();
+			voucher = document.getElementById("auth_voucher").value;
+			document.cookie = "auth=" + voucher + ";" + expires + ";path=/";
+		};
+	</script>
+	<link rel="stylesheet" href="captiveportal-styles.css">
+</head>
+<body>
+	<div id="main-card">
+		<h2>Oliver Inn Access Portal</h2>
+		<p>Enter your voucher code, then click Login to access the internet & your room key:</p>
+		<form id="main-form" method="post" action="$PORTAL_ACTION$">
+			<input id="auth_voucher" name="auth_voucher" type="text" onChange="setCookie()" placeholder="z1y2x3w4">
+			<input name="redirurl" type="hidden" value="$PORTAL_REDIRURL$">
+			<input name="zone" type="hidden" value="$PORTAL_ZONE$">
+			<input id="submit" name="accept" type="submit" value="Login">
+		</form>
+	</div>
+</body>
+</html>
